@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/index1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="profile">
+            <img src="https://via.placeholder.com/80" alt="Profile Picture">
+            <h4>Welcome Admin</h4>
+            <p>Chào mừng bạn trở lại</p>
+        </div>
+        <a href="#" id="linkPos" class="btn btn-warning text-dark text-center" style="margin: 10px 20px;">POS Bán Hàng</a>
+        <a href="#" id="linkDashboard" class="active"><i class="fas fa-tachometer-alt"></i> Bảng điều khiển</a>
+        <a href="#" id="linkCategorys"><i class="fas fa-user-tie"></i> Quản lý loại hàng</a>
+        <a href="#" id="linkProducts"><i class="fas fa-users"></i> Quản lý sản phẩm</a>
+        <a href="#" id="linkOrders"><i class="fas fa-box"></i> Quản lí đơn hàng</a>
+        <a href="#" id="linkCoupons"><i class="fas fa-shopping-cart"></i> Quản lý giảm giá</a>
+        <a href="#" id="linkUsers"><i class="fas fa-clipboard"></i> Quản lý tài khoản</a>
+        <a href="#" id="linkOrderDetails"><i class="fas fa-clipboard"></i> Thống kê đơn hàng</a>
+    </div>
+    <div class="main-content mx-2" >
+    <div id="category">
+        <div class="content-wrapper">
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6 ">
+                            <h1 class="m-0">Category</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.content-header -->
+            <!-- Main content -->
+            <button type="button" class="btn btn-success btn-Category">
+                <i class="fas fa-upload"></i> Upload Files
+            </button>
+
+            <a href="/admin/index/category/PrintFile" type="button" class="btn btn-secondary btn-Category">
+                <i class="fas fa-print"></i> Print Data
+            </a>
+            <a href="/admin/index/category/ExportExcel" class="btn btn-warning btn-Category" role="button">
+                <i class="fas fa-file-excel"></i> Export Excel
+            </a>
+            <a href="/admin/index/category/ExportPdf" type="button" class="btn btn-info btn-Category">
+                <i class="fas fa-file-pdf"></i> Export PDF
+            </a>
+            <button type="button" class="btn btn-danger btn-Category">
+                <i class="fas fa-trash"></i> Remove all
+            </button>
+            <div class="card card-primary form-add">
+                <div class="card-header bg-primary">
+                    <h3 class="card-title">Add/Edit Cateory</h3>
+                </div>
+                <form action="/admin/category/add" method="post">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="productTypeName">Category Type Name</label>
+                            <input type="text" name="nameCategory" class="form-control" id="productTypeName"
+                                   placeholder="Enter category type name">
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="reset" formaction="/admin/index/category" class="btn btn-secondary">Reset
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class=" mt-3">
+                <!-- Table displaying product types -->
+                <table class="table table-bordered mt-3">
+                    <tr>
+                        <th>Id</th>
+                        <th>Product Type Name</th>
+                        <th>Created By</th>
+                        <th>Created Date</th>
+                        <th>Update By</th>
+                        <th>Update Date</th>
+                        <th>Function</th>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    th:data-target="'#exampleModal' + ${category.categoryId}">
+                                <i class="fas fa-edit"></i>
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="modal fade" th:id="'exampleModal' + ${category.categoryId}" tabindex="-1"
+                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Cập nhật</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+
+                                        <form th:action="@{'/admin/category/update/' + ${category.categoryId}}" method="post">
+                                            <div class="modal-body">
+                                                <input name="updatename" type="text" class="form-control"
+                                                       placeholder="Nhập thông tin muốn thay đổi">
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                    Close
+                                                </button>
+                                                <button type="submit" class="btn btn-danger">Update</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="btn btn-danger btn-sm col-4"> <i class="fas fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+   
+</body>
+</html>

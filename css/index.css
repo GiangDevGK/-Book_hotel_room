@@ -1,0 +1,184 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    height: 100vh;
+    margin: 0;
+}
+
+.sidebar {
+    width: 250px;
+    background: #222653;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+}
+
+.sidebar h2 {
+    text-align: center;
+}
+
+.sidebar .profile {
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e4e144;
+}
+
+.sidebar .profile img {
+    width: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.sidebar .profile h4 {
+    margin: 0;
+}
+
+.sidebar a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 10px 20px;
+    margin: 5px 0;
+    transition: background 0.3s;
+}
+
+.sidebar a:hover, .sidebar a.active {
+    background: #30ca19;
+}
+
+.sidebar a .fas {
+    margin-right: 10px;
+}
+
+.main-content {
+    flex-grow:1;
+    padding: 20px;
+    background: #fff;
+    overflow-y: auto;
+}
+
+.card {
+    margin-bottom: 20px;
+}
+
+.card-header {
+    background: #007bff;
+    color: #fff;
+}
+.card-header1 {
+    margin-left: 350px;
+    text-align: center;
+    color: #007bff; /* Change this to your desired color */
+}
+
+
+.table td, .table th {
+    vertical-align: middle;
+}
+
+.table th {
+    background: #f8f9fa;
+}
+
+.stat-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.stat-card h3 {
+    margin: 0;
+}
+
+.stat-card .icon {
+    font-size: 3rem;
+}
+
+.bg-primary {
+    background: #007bff;
+}
+
+.bg-success {
+    background: #28a745;
+}
+
+.bg-warning {
+    background: #ffc107;
+}
+
+.bg-danger {
+    background: #dc3545;
+}
+
+/*
+Category css
+*/
+
+
+.content-header h1 {
+    position: absolute;
+    left: 100%;
+    transform: translateX(-50%);
+    font-size: 2.5rem;
+    color: #4CAF50; /* Màu xanh lá cây */
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: 2px solid #4CAF50; /* Viền dưới màu xanh lá cây */
+    padding-bottom: 10px; /* Khoảng cách giữa tiêu đề và viền dưới */
+}
+.titleProduct {
+    position: relative;
+    font-size: 2.5rem;
+    color: #4CAF50; /* Green color */
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: 2px solid #4CAF50; /* Green bottom border */
+    padding-bottom: 10px; /* Space between title and bottom border */
+    margin-bottom: 20px; /* Space below the title for better separation from other content */
+    text-align: center; /* Center the title */
+}
+
+/* Custom CSS for label icons */
+.label-icon {
+    margin-right: 5px; /* Điều chỉnh khoảng cách giữa biểu tượng và văn bản */
+}
+/* Tùy chỉnh CSS cho màu sắc của nhãn */
+.label-primary {
+    color: #007bff; /* Màu xanh dương */
+}
+.label-success {
+    color: #28a745; /* Màu xanh lá */
+}
+.label-secondary {
+    color: #6c757d; /* Màu xám */
+}
+.label-warning {
+    color: #ffc107; /* Màu vàng */
+}
+.label-info {
+    color: #17a2b8; /* Màu teal */
+}
+.label-danger {
+    color: #dc3545; /* Màu đỏ */
+}
+/* Tùy chỉnh CSS cho màu sắc của bảng */
+.table th,
+.table td {
+    color: #495057; /* Màu xám đậm cho văn bản trong bảng */
+}
+.table thead th {
+    background-color: #007bff; /* Màu xanh dương cho tiêu đề bảng */
+    color: #fff; /* Màu trắng cho văn bản tiêu đề bảng */
+}
+/*order*/
+.form-order{
+
+    margin-left: -200px;
+}
+
+

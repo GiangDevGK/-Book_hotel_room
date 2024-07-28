@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hotel Booking</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <link rel="stylesheet" href="css/product.css" />
+</head>
+<body>
+    <div class="navbar">
+        <div class="phone-number">
+            <span>01208 52 175</span>
+            <a href="#" class="help-link">Need Help?</a>
+        </div>
+        <div class="language">
+            <i class="fas fa-globe"></i>
+            <select>
+                <option value="en">English</option>
+                <option value="vi">Tiếng Việt</option>
+            </select>
+        </div>
+        <div class="user-options">
+            <a href="#" class="user-link"><i class="fas fa-bed"></i> My stays</a>
+            <a href="#" class="user-link join-button"><i class="fas fa-user-plus"></i> Join</a>
+            <a href="#" class="user-link sign-in-button"><i class="fas fa-sign-in-alt"></i> Sign in</a>
+        </div>
+    </div>
+
+    <div class="main-nav">
+        <a href="#" class="logo">
+            <img src="https://via.placeholder.com/150" alt="IHG Logo" />
+        </a>
+        <div class="menu-nav">
+            <a href="#">Destinations</a>
+            <a href="#">Offers</a>
+            <a href="#">Meetings & Events</a>
+            <a href="#">Brands</a>
+            <a href="#">IHG One Rewards</a>
+        </div>
+    </div>
+
+    <div class="search-bar">
+        <div class="search-item">
+            <span>Destination</span>
+            <div class="search-input">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Ho Chi Minh City, Vietnam" />
+            </div>
+        </div>
+        <div class="search-item">
+            <span>1 Night</span>
+            <div class="search-input">
+                <i class="fas fa-calendar-alt"></i>
+                <input type="text" placeholder="24/07/2024 - 25/07/2024" />
+            </div>
+        </div>
+        <div class="search-item">
+            <span>Rooms & Guests</span>
+            <div class="search-input" onclick="toggleDropdown(event)">
+                <i class="fas fa-user-friends"></i>
+                <input type="text" placeholder="1 rooms, 1 guest" readonly />
+                <div class="dropdown">
+                    <div class="dropdown-content">
+                        <div class="dropdown-item">
+                            <span>Rooms</span>
+                            <div class="quantity-selector">
+                                <button class="quantity-btn" onclick="decreaseQuantity(this, event)">-</button>
+                                <span class="quantity">1</span>
+                                <button class="quantity-btn" onclick="increaseQuantity(this, event)">+</button>
+                            </div>
+                        </div>
+                        <div class="dropdown-item">
+                            <span>Adults</span>
+                            <div class="quantity-selector">
+                                <button class="quantity-btn" onclick="decreaseQuantity(this, event)">-</button>
+                                <span class="quantity">1</span>
+                                <button class="quantity-btn" onclick="increaseQuantity(this, event)">+</button>
+                            </div>
+                        </div>
+                        <div class="dropdown-item">
+                            <span>Children</span>
+                            <div class="quantity-selector">
+                                <button class="quantity-btn" onclick="decreaseQuantity(this, event)">-</button>
+                                <span class="quantity">1</span>
+                                <button class="quantity-btn" onclick="increaseQuantity(this, event)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="search-item">
+            <span>Rate Preference</span>
+            <div class="search-input">
+                <i class="fas fa-tag"></i>
+                <input type="text" placeholder="Best Available **" />
+            </div>
+        </div>
+        <div class="search-item">
+            <button class="search-button">SEARCH</button>
+        </div>
+    </div>
+
+    <h1 class="filter-bar-h1">Select a Hotel</h1>
+    <div class="filter-bar">
+        <div class="filter-section">
+            <div class="filter-label">View by</div>
+            <button class="filter">
+                <i class="fas fa-map-marker-alt"></i> Map
+            </button>
+        </div>
+        <div class="filter-section">
+            <div class="filter-label">Filter By</div>
+            <div class="filter-buttons">
+                <button class="filter">Amenities</button>
+                <button class="filter">Brands (All)</button>
+            </div>
+        </div>
+        <div class="filter-section">
+            <div class="filter-label">Sort by</div>
+            <button class="filter">
+                Distance <i class="fas fa-angle-down"></i>
+            </button>
+        </div>
+        <div class="filter-section">
+            <div class="filter-label">Pay with</div>
+            <div class="filter-buttons">
+                <button class="filter">
+                    Money <i class="fas fa-angle-down"></i>
+                </button>
+                <button class="filter">VND <i class="fas fa-angle-down"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="hotel-card">
+        <div class="hotel-images">
+            <img src="images/about_img.jpg" alt="Hotel Image" />
+            <div class="quick-view">
+                <button data-bs-toggle="modal" data-bs-target="#exampleModal">Quick View</button>
+            </div>
+        </div>
+        <div class="hotel-info">
+            <div class="hotel-title">
+                <h2>Holiday Inn & Suites Saigon Airport</h2>
+                <p>18E Cong Hoa Street Tan Binh District, Ho Chi Minh City Vietnam | 01208 52 175</p>
+            </div>
+            <div class="hotel-details">
+                <div class="hotel-rating">
+                    <span>★★★★☆</span>
+                    <span>324 reviews</span>
+                </div>
+                <div class="hotel-distance">
+                    <span>3.67 km (2.28mi) from city centre</span>
+                </div>
+                <a href="#" class="hotel-website">Hotel Website</a>
+            </div>
+            <div class="amenities-price">
+                <div class="amenities">
+                    <div class="amenities-column">
+                        <div class="amenity-item">
+                            <i class="fas fa-swimming-pool"></i>
+                            <span>Pool</span>
+                        </div>
+                        <div class="amenity-item">
+                            <i class="fas fa-shuttle-van"></i>
+                            <span>Airport Shuttle</span>
+                        </div>
+                        <div class="amenity-item">
+                            <i class="fas fa-bus"></i>
+                            <span>Area Shuttle</span>
+                        </div>
+                    </div>
+                    <div class="amenities-column">
+                        <div class="amenity-item">
+                            <i class="fas fa-utensils"></i>
+                            <span>Kitchenette</span>
+                        </div>
+                        <div class="amenity-item">
+                            <i class="fas fa-briefcase"></i>
+                            <span>Business Center</span>
+                        </div>
+                        <div class="amenity-item">
+                            <i class="fas fa-wifi"></i>
+                            <span>Wireless Internet</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hotel-price">
+                    <span>2,074,073 VNĐ</span>
+                    <span class="per-night">per night</span>
+                    <button class="select-hotel-button">Select Hotel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal quick-view -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <img src="images/BannerModal.jpg" alt="BannerModal" style="height: 110px" />
+                <div class="modal-body">
+                  <div class="left-side">
+                    <div class="main-image" id="mainImageContainer">
+                        <img src="images/about_img.jpg" alt="Main Image" id="mainImage" />
+                    </div>
+                    <div class="thumbnails">
+                        <img src="images/banner.jpg" alt="Thumbnail 1" onclick="changeImage('images/banner.jpg')" />
+                        <img src="images/BannerModal.jpg" alt="Thumbnail 2" onclick="changeImage('images/BannerModal.jpg')" />
+                        <img src="images/img1.jpg" alt="Thumbnail 3" onclick="changeImage('images/img1.jpg')" />
+                        <img src="images/img2.jpg" alt="Thumbnail 4" onclick="changeImage('images/img2.jpg')" />
+                    </div>
+                </div>
+                <div class="details-container">
+                    <div class="details">
+                        <h2>Holiday Inn & Suites Saigon Airport</h2>
+                        <div class="price">
+                            1,703,703 <span class="currency">VND</span>
+                            <div class="per-night">per night</div>
+                        </div>
+                        <button class="view-rooms-button">View Rooms</button>
+                    </div>
+                </div>
+                </div>
+                <div class="modal-extra">
+                    <h3>What other guests have to say</h3>
+                    <div class="reviews">
+                        <span class="stars">★★★★☆</span>
+                        <span class="review-count">324 reviews</span>
+                        <p>"Excellent service and hotel staff, special thanks to Andrew that welcome us very warm"</p>
+                    </div>
+                    <h3>Amenities</h3>
+                    <div class="amenities">
+                        <div class="amenity-item">
+                            <i class="fas fa-swimming-pool"></i>
+                            <span>Pool</span>
+                        </div>
+                        <div class="amenity-item">
+                            <i class="fas fa-shuttle-van"></i>
+                            <span>Airport Shuttle</span>
+                        </div>
+                        <div class="amenity-item">
+                            <i class="fas fa-bus"></i>
+                            <span>Area Shuttle</span>
+                        </div>
+                        <div class="amenity-item">
+                            <i class="fas fa-utensils"></i>
+                            <span>Kitchenette</span>
+                        </div>
+                        <div class="amenity-item">
+                            <i class="fas fa-briefcase"></i>
+                            <span>Business Center</span>
+                        </div>
+                        <div class="amenity-item">
+                            <i class="fas fa-wifi"></i>
+                            <span>Wireless Internet</span>
+                        </div>
+                        <div class="amenity-item">
+                            <i class="fas fa-heartbeat"></i>
+                            <span>Wellness Activities</span>
+                        </div>
+                        <div class="amenity-item">
+                            <i class="fas fa-child"></i>
+                            <span>Kids Eat Free</span>
+                        </div>
+                        <div class="amenity-item">
+                            <i class="fas fa-utensils"></i>
+                            <span>In-hotel restaurants</span>
+                        </div>
+                        <div class="amenity-item">
+                            <i class="fas fa-paw"></i>
+                            <span>No pets allowed</span>
+                        </div>
+                        <div class="amenity-item">
+                            <i class="fas fa-swimming-pool"></i>
+                            <span>1 Pool(s)</span>
+                        </div>
+                    </div>
+                    <h3>Parking Information</h3>
+                    <p>Complimentary parking at the basement is available for hotel in-house guests, restaurant patrons, and attendees of meetings and events.</p>
+                    <a href="#" class="hotel-website">Hotel Website</a>
+                    <div id="map" style="height: 400px; width: 100%"></div>
+                </div>
+                <div class="reviews-container">
+                    <h2>Hotel Reviews</h2>
+                    <div class="review">
+                        <div class="review-header">
+                            <h3>Excellent location and clean</h3>
+                            <p><strong>By Oscar</strong></p>
+                        </div>
+                        <div class="stars-author">
+                            <div class="stars">★★★★★</div>
+                        </div>
+                        <p>Excellent service and hotel staff, special thanks to Andrew that welcome us very warm</p>
+                    </div>
+                    <div class="review">
+                        <div class="review-header">
+                            <h3>Nice hotel</h3>
+                            <p><strong>By hkt91</strong></p>
+                        </div>
+                        <div class="stars-author">
+                            <div class="stars">★★★★★</div>
+                        </div>
+                        <p>A bit far from the city centre but close to the airport, the room was great, the pool was great. If you have a flight to catch next day this place would be the best one to stay before you go.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button id="back-to-top" onclick="scrollToTop()">Back to top</button>
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCq7KA5Rbm2PFSqxs-P8GFa7rhwrj6DkT8&callback=initMap"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <script src="js/product.js"></script>
+</body>
+</html>
